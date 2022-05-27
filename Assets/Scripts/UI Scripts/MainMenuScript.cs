@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Tobii.Gaming;
 
 /// <summary>
 /// Controls the buttons in Main Menu Scene.
@@ -10,16 +8,38 @@ using Tobii.Gaming;
 /// </summary>
 public class MainMenuScript : MonoBehaviour
 {
+	[Header("Referenced Scripts")]
+	SettingManager SM;
+
+	[Header("Eye-tracking Settings")]
+	[SerializeField] private Toggle tobiiActiveToggle;
+	[SerializeField] private Toggle tobiiBubbleToggle;
+
+	private void Awake()
+	{
+		SM = FindObjectOfType<SettingManager>();
+	}
+
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		tobiiActiveToggle.isOn = SM.IsTobiiActive;
+		tobiiBubbleToggle.isOn = SM.IsTobiiBubble;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+		tobiiActiveToggle.isOn = SM.IsTobiiActive;
 
+		if (!tobiiActiveToggle.isOn)
+		{
+			tobiiBubbleToggle.isOn = false;
+		}
+		else
+		{
+			tobiiBubbleToggle.isOn = SM.IsTobiiBubble;
+		}
 	}
 
 	/// <summary>
@@ -27,8 +47,9 @@ public class MainMenuScript : MonoBehaviour
 	/// </summary>
 	public void PlayGame()
 	{
-		Debug.Log("Load Scene");
-		//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		SM.SaveSettings();
+
+		SceneManager.LoadScene("MainHub");
 	}
 
 	/// <summary>
@@ -36,7 +57,8 @@ public class MainMenuScript : MonoBehaviour
 	/// </summary>
 	public void ExitGame()
 	{
-		Debug.Log("Quit Game");
+		SM.SaveSettings();
+
 		Application.Quit();
 	}
 }

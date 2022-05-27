@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 8ff49b74ed2778943bb2fcb6ef400138
+  - enabled: 1
+    path: Assets/Scenes/MainHub.unity
+    guid: 6edfb697f5cb9ef419cfec77314d4b45
+  - enabled: 1
+    path: Assets/Scenes/Levels/SimonSays.unity
+    guid: 26f480158168a1d4296e9794e16a2a5d
+  - enabled: 1
+    path: Assets/Scenes/Levels/NoEyeContact.unity
+    guid: df5166e46af4e854bb59df5c68f2e6cd
+  - enabled: 1
+    path: Assets/Scenes/Levels/HeadsUp.unity
+    guid: fec57ace0f67dfb4183d03b6abf8b687
   m_configObjects: {}
