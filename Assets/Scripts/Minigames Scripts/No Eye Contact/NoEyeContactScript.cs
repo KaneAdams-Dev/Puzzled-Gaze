@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Tobii.Gaming;
 
@@ -8,7 +7,7 @@ using Tobii.Gaming;
 /// Player has to look at the robot without the robot knowing.
 /// Created by: Kane Adams
 /// </summary>
-public class NoEyeContactScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class NoEyeContactScript : MonoBehaviour
 {
 	[Header("Referenced Scripts")]
 	[SerializeField] private GameOverScript GOS;
@@ -181,19 +180,17 @@ public class NoEyeContactScript : MonoBehaviour, IPointerEnterHandler, IPointerE
 	}
 
 	/// <summary>
-	/// Player is staring at robot
+	/// Player's mouse is starting at robot
 	/// </summary>
-	/// <param name="eventData"></param>
-	public void OnPointerEnter(PointerEventData eventData)
+	private void OnMouseEnter()
 	{
 		isStaring = true;
 	}
 
 	/// <summary>
-	/// Player is looking away from robot
+	/// Player's mouse is looking away from robot
 	/// </summary>
-	/// <param name="eventData"></param>
-	public void OnPointerExit(PointerEventData eventData)
+	private void OnMouseExit()
 	{
 		isStaring = false;
 	}
